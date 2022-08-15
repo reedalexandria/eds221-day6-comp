@@ -47,8 +47,10 @@ planets_long
 
 #would need to include data frame for this to work
 
-starwars |>
+sw_sep <- starwars |>
   separate(col = name,
            into = c("first_name", "last_name"),
            sep = " ")
+
+sw_sep
 ```
