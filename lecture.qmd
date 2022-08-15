@@ -1,0 +1,54 @@
+---
+title: "Lecture"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+#Wide to long example:
+
+dogs <- tribble(
+  ~dog_name, ~week_1, ~week_2, ~week_3,
+  "teddy", 20, 21, 18,
+  "khora", 17, 24, 25
+)
+
+dogs_longer <- dogs |>
+  tidyr::pivot_longer(week_1:week_3,
+                      names_to = "week",
+                      values_to = "miles")
+dogs_longer
+```
+
+```{r}
+# wider to longer
+
+planets <- tribble(
+  ~world, ~variable, ~value,
+  "Tattooine", "population", 200000,
+  "Endor", "population", 43000,
+  "Tattooine", "radius", 3182.4,
+  "Endor", "radius", 2986.1
+)
+
+planets_long <- planets |>
+  tidyr::pivot_wider(names_from = "variable",
+                     values_from = "value")
+
+planets_long
+```
+
+```{r}
+#Separate ()
+
+#would need to include data frame for this to work
+
+starwars |>
+  separate(col = name,
+           into = c("first_name", "last_name"),
+           sep = " ")
+```
